@@ -223,7 +223,7 @@ Maximum Possible Score = 100 points
 | POST | `/api/leads/score` | Score uploaded leads |
 | GET | `/api/leads/results` | Get scoring results |
 | GET | `/api/leads/results/export` | Export results as CSV |
-| GET | `/` | Health check |
+| GET | `/` | Server check
 
 ##  Technical Details
 
