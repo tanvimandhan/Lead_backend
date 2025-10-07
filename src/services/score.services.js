@@ -42,8 +42,12 @@ export const scoreLeads = async () => {
     const { intent, reasoning, aiScore } = await getAIIntent(lead, offer);
 
     const finalScore = ruleScore + aiScore;
-    results.push({ ...lead, intent, score: finalScore, reasoning });
+    const scoredLead = { ...lead, intent, score: finalScore, reasoning };
+    console.log("Scored lead:", scoredLead);
+    results.push(scoredLead);
   }
 
+  console.log("Final results array:", results);
+  console.log("Final results length:", results.length);
   return results;
 };

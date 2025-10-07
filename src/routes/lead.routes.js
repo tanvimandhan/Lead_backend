@@ -14,8 +14,14 @@ router.post("/upload", upload.single("file"), uploadLeads);
 router.post("/score", async (req, res) => {
   try {
     console.log("Starting scoring process...");
-    results = await scoreLeads();
-    console.log("Scoring completed, results:", results.length);
+    const scoringResults = await scoreLeads();
+    console.log("Scoring function returned:", scoringResults);
+    console.log("Results length from function:", scoringResults.length);
+    
+    // Store results in the module variable
+    results = scoringResults;
+    console.log("Results stored in module variable, length:", results.length);
+    
     res.status(200).json({ message: "Scoring completed", count: results.length });
   } catch (error) {
     console.error("Scoring error:", error);
@@ -24,6 +30,8 @@ router.post("/score", async (req, res) => {
 });
 
 router.get("/results", (req, res) => {
+  console.log("Results API called, results array:", results);
+  console.log("Results length:", results.length);
   res.status(200).json(results);
 });
 
