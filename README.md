@@ -273,14 +273,10 @@ The system includes comprehensive error handling:
 ##  Deployment
 
 ### Vercel Deployment
-1. **Install Vercel CLI**: `npm i -g vercel`
-2. **Login to Vercel**: `vercel login`
-3. **Deploy**: `vercel`
-4. **Set Environment Variables** in Vercel dashboard:
+1. **Login to Vercel**: `vercel login`
+2. **Deploy**: `vercel`
+3. **Set Environment Variables** in Vercel dashboard:
 
-### Environment Variables for Production
-- `GEMINI_API_KEY`
-- `PORT`
 
 
 
