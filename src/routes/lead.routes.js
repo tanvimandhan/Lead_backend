@@ -12,8 +12,15 @@ let results = [];
 router.post("/upload", upload.single("file"), uploadLeads);
 
 router.post("/score", async (req, res) => {
-  results = await scoreLeads();
-  res.status(200).json({ message: "Scoring completed", count: results.length });
+  try {
+    console.log("Starting scoring process...");
+    results = await scoreLeads();
+    console.log("Scoring completed, results:", results.length);
+    res.status(200).json({ message: "Scoring completed", count: results.length });
+  } catch (error) {
+    console.error("Scoring error:", error);
+    res.status(500).json({ error: "Scoring failed", details: error.message });
+  }
 });
 
 router.get("/results", (req, res) => {

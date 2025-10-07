@@ -5,6 +5,18 @@ import { getAIIntent } from "./ai.service.js";
 export const scoreLeads = async () => {
   const offer = getOffer();
   const leads = getLeads();
+  
+  console.log("Offer:", offer);
+  console.log("Leads:", leads);
+  
+  if (!offer) {
+    throw new Error("No offer found. Please create an offer first.");
+  }
+  
+  if (!leads || leads.length === 0) {
+    throw new Error("No leads found. Please upload leads first.");
+  }
+  
   const results = [];
 
   for (const lead of leads) {
