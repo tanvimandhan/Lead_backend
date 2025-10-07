@@ -1,0 +1,4 @@
+name,role,company,industry,location,linkedin_bio,score,intent,reasoning
+John Doe,Head of Sales,TechCorp,Technology,,,80,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
+Jane Smith,Marketing Manager,StartupXYZ,SaaS,,,70,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
+Bob Johnson,CEO,InnovateLtd,B2B,,,40,Medium,"Moderate alignment - CEO role may have some influence in B2B."

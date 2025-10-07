@@ -35,13 +35,17 @@ router.get("/results", (req, res) => {
   res.status(200).json(results);
 });
 
-// Optional: export as CSV
+// Export results as CSV
 router.get("/results/export", (req, res) => {
+  if (results.length === 0) {
+    return res.status(400).json({ error: "No results to export. Run scoring first." });
+  }
+
   const csvData =
-    "name,role,company,industry,score,intent,reasoning\n" +
+    "name,role,company,industry,location,linkedin_bio,score,intent,reasoning\n" +
     results.map(
       (r) =>
-        `${r.name},${r.role},${r.company},${r.industry},${r.score},${r.intent},"${r.reasoning}"`
+        `${r.name || ""},${r.role || ""},${r.company || ""},${r.industry || ""},${r.location || ""},${r.linkedin_bio || ""},${r.score},${r.intent},"${r.reasoning}"`
     ).join("\n");
 
   fs.writeFileSync("results.csv", csvData);

@@ -11,6 +11,7 @@ app.use(express.json());
 // Routes
 app.use("/api/leads", leadRoutes);
 app.use("/api/offers", offerRoutes);
+app.use("/offer", offerRoutes); // Direct path as per spec
 
 // Root route
 app.get("/", (req, res) => {
