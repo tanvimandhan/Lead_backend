@@ -1,4 +1,6 @@
 name,role,company,industry,location,linkedin_bio,score,intent,reasoning
-John Doe,Head of Sales,TechCorp,Technology,,,80,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
-Jane Smith,Marketing Manager,StartupXYZ,SaaS,,,70,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
-Bob Johnson,CEO,InnovateLtd,B2B,,,40,Medium,"Moderate alignment - CEO role may have some influence in B2B."
+John Doe,Head of Sales,TechCorp,Technology,San Francisco,Growth-focused sales leader with 10+ years in B2B SaaS,90,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
+Jane Smith,Marketing Manager,StartupXYZ,SaaS,New York,Digital marketing expert specializing in lead generation,80,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
+Bob Johnson,CEO,InnovateLtd,B2B,Austin,Serial entrepreneur focused on scaling B2B companies,50,Medium,"Moderate alignment - CEO role may have some influence in B2B."
+Sarah Wilson,VP of Growth,Scalify,SaaS,Seattle,Revenue growth specialist with expertise in AI-powered sales tools,90,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."
+Mike Chen,Sales Director,DataFlow,Technology,Boston,Data-driven sales leader with strong technical background,90,High,"Strong alignment with offer - decision maker in target industry with growth/sales focus."

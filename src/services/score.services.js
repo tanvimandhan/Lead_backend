@@ -22,7 +22,7 @@ export const scoreLeads = async () => {
   for (const lead of leads) {
     let ruleScore = 0;
 
-    // 1️⃣ Role relevance (max 20 points)
+    //Role relevance (max 20 points)
     const role = lead.role?.toLowerCase();
     if (role.includes("head") || role.includes("chief") || role.includes("director") || role.includes("vp") || role.includes("president"))
       ruleScore += 20; // Decision maker
@@ -30,7 +30,7 @@ export const scoreLeads = async () => {
       ruleScore += 10; // Influencer
     // else 0 points
 
-    // 2️⃣ Industry match (max 20 points)
+    // Industry match (max 20 points)
     const offerIndustry = offer.ideal_use_cases[0].toLowerCase();
     const leadIndustry = lead.industry?.toLowerCase();
     if (leadIndustry.includes(offerIndustry)) 
@@ -39,7 +39,7 @@ export const scoreLeads = async () => {
       ruleScore += 10; // Adjacent industry
     // else 0 points
 
-    // 3️⃣ Data completeness (max 10 points)
+    // Data completeness (max 10 points)
     const requiredFields = ['name', 'role', 'company', 'industry', 'location', 'linkedin_bio'];
     const completeFields = requiredFields.filter(field => lead[field] && lead[field].trim() !== "");
     if (completeFields.length === requiredFields.length) 
