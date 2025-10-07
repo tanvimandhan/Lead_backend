@@ -5,7 +5,10 @@ import { scoreLeads } from "../services/score.services.js";
 import fs from "fs";
 
 const router = express.Router();
-const upload = multer({ dest: "uploads/" });
+
+// Use memory storage for serverless deployment
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 let results = [];
 
@@ -48,8 +51,10 @@ router.get("/results/export", (req, res) => {
         `${r.name || ""},${r.role || ""},${r.company || ""},${r.industry || ""},${r.location || ""},${r.linkedin_bio || ""},${r.score},${r.intent},"${r.reasoning}"`
     ).join("\n");
 
-  fs.writeFileSync("results.csv", csvData);
-  res.download("results.csv");
+  // For serverless deployment, return CSV data directly
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Disposition', 'attachment; filename="results.csv"');
+  res.send(csvData);
 });
 
 export default router;

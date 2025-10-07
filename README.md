@@ -24,38 +24,52 @@ cd lead_backend
 
 # Install dependencies
 npm install
+```
 
 ### 3. Environment Configuration
 Create a `.env` file in the root directory:
-
+```env
 # Google Gemini AI Configuration
 GEMINI_API_KEY=your_gemini_api_key_here
 
 # Server Configuration
 PORT=5000
+```
+
+### 4. Get Gemini API Key
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Create a new API key
+4. Copy the key and paste it in your `.env` file
 
 ### 5. Start the Server
+```bash
 npm start
+```
 
 The server will run on `http://localhost:5000`
 
-## API Usage Examples with Postman
+## 📚 API Usage Examples with Postman
 
 ### 1. Create an Offer
-**Endpoint**:POST http://localhost:5000/offer/
+**Endpoint**: `POST /offer/`
 
 **Headers**:
+```
 Content-Type: application/json
+```
 
 **Body** (raw JSON):
+```json
 {
   "name": "AI Outreach Automation",
   "value_props": ["24/7 outreach", "6x more meetings"],
   "ideal_use_cases": ["B2B SaaS mid-market"]
 }
+```
 
 **Expected Response**:
-
+```json
 {
   "message": "Offer saved",
   "offer": {
@@ -67,29 +81,30 @@ Content-Type: application/json
 ```
 
 ### 2. Upload Leads CSV
-**Endpoint**:POST http://localhost:5000/api/leads/upload
+**Endpoint**: `POST /api/leads/upload`
 
 **Body**: form-data
 - Key: `file` (type: File)
 - Value: Upload your CSV file
 
 **CSV Format**:
-
+```csv
 name,role,company,industry,location,linkedin_bio
 John Doe,Head of Sales,TechCorp,Technology,San Francisco,Growth-focused sales leader with 10+ years in B2B SaaS
 Jane Smith,Marketing Manager,StartupXYZ,SaaS,New York,Digital marketing expert specializing in lead generation
 Bob Johnson,CEO,InnovateLtd,B2B,Austin,Serial entrepreneur focused on scaling B2B companies
+```
 
-
-**Expected Response**:json
+**Expected Response**:
+```json
 {
   "message": "Leads uploaded",
   "count": 3
 }
-
+```
 
 ### 3. Score Leads
-**Endpoint**:POST http://localhost:5000/api/leads/score
+**Endpoint**: `POST /api/leads/score`
 
 **Body**: None required
 
@@ -102,7 +117,7 @@ Bob Johnson,CEO,InnovateLtd,B2B,Austin,Serial entrepreneur focused on scaling B2
 ```
 
 ### 4. Get Results
-**Endpoint**:GET http://localhost:5000/api/leads/results
+**Endpoint**: `GET /api/leads/results`
 
 **Expected Response**:
 ```json
@@ -133,11 +148,11 @@ Bob Johnson,CEO,InnovateLtd,B2B,Austin,Serial entrepreneur focused on scaling B2
 ```
 
 ### 5. Export Results
-**Endpoint**: GET http://localhost:5000/api/leads/results/export 
+**Endpoint**: `GET /api/leads/results/export`
 
 **Expected Response**: Downloads a CSV file with all scored leads
 
-## LOGIC
+## 🧠 Rule Logic & Scoring System
 
 ### Rule-Based Scoring (Maximum 50 Points)
 
@@ -206,7 +221,7 @@ Final Score = Rule Score + AI Score
 Maximum Possible Score = 100 points
 ```
 
-##  Complete Workflow
+## 🔄 Complete Workflow
 
 1. **Create Offer** → Define your product/offer details
 2. **Upload Leads** → Bulk upload leads via CSV
@@ -214,7 +229,7 @@ Maximum Possible Score = 100 points
 4. **Get Results** → Retrieve scored leads with AI reasoning
 5. **Export Results** → Download results as CSV
 
-##  API Endpoints Summary
+## 🛠️ API Endpoints Summary
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
@@ -223,9 +238,9 @@ Maximum Possible Score = 100 points
 | POST | `/api/leads/score` | Score uploaded leads |
 | GET | `/api/leads/results` | Get scoring results |
 | GET | `/api/leads/results/export` | Export results as CSV |
-| GET | `/` | Server check
+| GET | `/` | Health check |
 
-##  Technical Details
+## 🔧 Technical Details
 
 ### Dependencies
 - **Express.js**: Web framework
@@ -251,7 +266,7 @@ src/
 └── server.js
 ```
 
-##  Error Handling
+## 🚨 Error Handling
 
 The system includes comprehensive error handling:
 - **Missing API Key**: Falls back to mock AI logic
@@ -259,9 +274,37 @@ The system includes comprehensive error handling:
 - **Missing Data**: Provides clear error messages
 - **AI Service Failures**: Automatic fallback to rule-based scoring
 
+## 🚀 Deployment
 
+### Vercel Deployment
+1. **Install Vercel CLI**: `npm i -g vercel`
+2. **Login to Vercel**: `vercel login`
+3. **Deploy**: `vercel`
+4. **Set Environment Variables** in Vercel dashboard:
+   - `GEMINI_API_KEY`: Your Gemini API key
+5. **Redeploy**: `vercel --prod`
 
+### Environment Variables for Production
+- `GEMINI_API_KEY`: Your Google Gemini API key
+- `PORT`: Server port (optional, defaults to 5000)
 
+## 📝 Notes
 
+- **Serverless Compatible**: Updated to work with Vercel and other serverless platforms
+- **Memory Storage**: Uses memory storage for file uploads (no disk writes)
+- **Mock AI Fallback**: If Gemini API key is not provided, the system uses intelligent mock logic
+- **Data Persistence**: All data is stored in memory (resets on server restart)
+- **Rate Limits**: Gemini AI has usage limits (check Google AI Studio for details)
+- **No File System**: Uploaded files are processed in memory
 
+## 🤝 Contributing
 
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the ISC License.
