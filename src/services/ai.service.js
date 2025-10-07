@@ -9,6 +9,7 @@ export const getAIIntent = async (lead, offer) => {
 
   // High intent indicators
   if (
+    
     leadText.toLowerCase().includes("growth") || 
     leadText.toLowerCase().includes("sales") ||
     leadText.toLowerCase().includes("revenue") ||
